@@ -1,0 +1,53 @@
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended'],
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: ['.eslintrc.{js,cjs}'],
+      parserOptions: {
+        sourceType: 'script',
+      },
+    },
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint', 'react'],
+  rules: {
+    'react/react-in-jsx-scope': 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/no-unresolved': 0,
+    'import/extensions': 0,
+    'react/function-component-definition': 0,
+    'react/jsx-filename-extension': [1, {extensions: ['.ts', '.tsx']}],
+    'react/jsx-curly-brace-presence': 0,
+    'import/prefer-default-export': 0,
+    'no-unused-vars': 0,
+    'react/jsx-boolean-value': 0,
+    'no-shadow': 0,
+    'jsx-a11y/aria-role': 0,
+    'no-case-declarations': 0,
+    'default-param-last': 0,
+    'spaced-comment': 0,
+    'import/newline-after-import': 0,
+    'react/jsx-no-useless-fragment': 0,
+    'react/self-closing-comp': 0,
+    'prefer-template': 0,
+    'react/no-array-index-key': 0,
+    'no-use-before-define': 0,
+    'no-console': 0,
+    'react-hooks/rules-of-hooks': 0,
+    'react/jsx-fragments': 0,
+    'no-undef': 0,
+    'no-empty-pattern': 0,
+    'react/no-unused-prop-types': 0,
+  },
+};
