@@ -8,4 +8,3 @@ export const fetchStockPrice = async (item: StockPriceRequestDto): Promise<Stock
   );
   return response.data;
 };
-

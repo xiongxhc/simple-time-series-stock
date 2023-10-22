@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Typography variant="h3">Time Series Chart</Typography>
-        <TimeSeriesChart />
+        <TimeSeriesChart symbol={'AAPL'} timeframe={'D'} from={1691971459} to={1697971459} />
       </header>
     </div>
   );
