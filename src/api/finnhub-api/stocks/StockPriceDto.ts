@@ -14,3 +14,13 @@ export interface StockPriceResponseDto {
   t: string[];
   v: string[];
 }
+
+export interface StockSymbolResponseDto {
+  currency: string;
+  description: string;
+  displaySymbol: string;
+  figi: string;
+  mic: string;
+  symbol: string;
+  type: string;
+}
