@@ -8,9 +8,9 @@ export default class StocksQuery {
   getStockSymbol = (exchange = 'US') => {
     const {data} = useQuery({
       queryKey: [exchange],
-      queryFn: () =>
-        this.stockApi.fetchStockSymbol(exchange),
+      queryFn: () => this.stockApi.fetchStockSymbol(exchange),
     });
+    // In this case, we only need the `symbols`
     return data?.map((stock: StockSymbolResponseDto) => stock.symbol);
   };
 
