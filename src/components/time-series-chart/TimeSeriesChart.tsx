@@ -1,20 +1,23 @@
 import {Stack} from '@mui/material';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {fetchStockPrice} from '../../api/finnhub-api/stocks/StockApi';
-import {StockPriceRequestDto, StockPriceResponseDto} from '../../api/finnhub-api/stocks/StockPriceDto';
+import {StockPriceRequestDto} from '../../api/finnhub-api/stocks/StockPriceDto';
+import {useQuery} from '@tanstack/react-query';
 
 export const TimeSeriesChart = (props: StockPriceRequestDto) => {
   const {symbol, timeframe, from, to} = props;
-  const [chartData, setChartData] = useState<StockPriceResponseDto>();
+  // const [chartData, setChartData] = useState<StockPriceResponseDto>();
 
-  useEffect(() => {
-    fetchStockPrice({
-      symbol,
-      timeframe,
-      from,
-      to,
-    }).then((data) => setChartData(data));
-  }, []);
+  const {data} = useQuery({
+    queryKey: ['symbol', symbol],
+    queryFn: () =>
+      fetchStockPrice({
+        symbol,
+        timeframe,
+        from,
+        to,
+      }),
+  });
 
-  return <Stack>{JSON.stringify(chartData)}</Stack>;
+  return <Stack>{JSON.stringify(data)}</Stack>;
 };
