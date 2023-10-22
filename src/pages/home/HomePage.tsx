@@ -13,7 +13,13 @@ function HomePage() {
       <header className="HomePage-header">
         <Typography variant="h3">Time Series Chart</Typography>
         <Stack>{JSON.stringify(symbols)}</Stack>
-        <TimeSeriesChart symbol={'AAPL'} timeframe={'D'} from={1691971459} to={1697971459} priceType={PriceType.CLOSE}/>
+        <TimeSeriesChart
+          symbol={'AAPL'}
+          timeframe={'D'}
+          from={1691971459}
+          to={1697971459}
+          priceType={PriceType.CLOSE}
+        />
       </header>
     </div>
   );
