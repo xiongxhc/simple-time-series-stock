@@ -1,18 +1,22 @@
+import {PriceType} from './StockConst';
+
 export interface StockPriceRequestDto {
   symbol: string;
   timeframe: string;
   from: number;
   to: number;
+  // Custom type e.g. `open price`
+  priceType: PriceType;
 }
 
 export interface StockPriceResponseDto {
-  c: string[];
-  h: string[];
-  l: string[];
-  o: string[];
+  c: number[];
+  h: number[];
+  l: number[];
+  o: number[];
   s: string;
-  t: string[];
-  v: string[];
+  t: number[];
+  v: number[];
 }
 
 export interface StockSymbolResponseDto {

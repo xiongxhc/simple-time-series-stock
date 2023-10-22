@@ -1,7 +1,8 @@
 import {useQuery} from '@tanstack/react-query';
-import FinnhubStocksApi from '../../api/finnhub-api/stocks/StockApi';
-import {StockPriceRequestDto, StockSymbolResponseDto} from '../../api/finnhub-api/stocks/StockPriceDto';
+import FinnhubStocksApi from '../../api/finnhub-api/stocks/FinnhubStockApi';
+import {StockPriceRequestDto} from '../../api/finnhub-api/stocks/StockPriceDto';
 
+// Ideally, props for `StocksQuery` should be consistent across all API provider
 export default class StocksQuery {
   private stockApi = new FinnhubStocksApi();
 
@@ -10,21 +11,15 @@ export default class StocksQuery {
       queryKey: [exchange],
       queryFn: () => this.stockApi.fetchStockSymbol(exchange),
     });
-    // In this case, we only need the `symbols`
-    return data?.map((stock: StockSymbolResponseDto) => stock.symbol);
+    return data;
   };
 
   getStockPrice = (props: StockPriceRequestDto) => {
     const {symbol, timeframe, from, to} = props;
     const {data} = useQuery({
+      // `priceType` changes don't need to re-call api
       queryKey: [symbol, timeframe, from, to],
-      queryFn: () =>
-        this.stockApi.fetchStockPrice({
-          symbol,
-          timeframe,
-          from,
-          to,
-        }),
+      queryFn: () => this.stockApi.fetchStockPrice(props),
     });
     return data;
   };
