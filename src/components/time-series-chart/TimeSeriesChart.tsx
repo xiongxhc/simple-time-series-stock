@@ -4,8 +4,11 @@ import {createChart} from 'lightweight-charts';
 import {StockPriceRequestDto} from '../../api/finnhub-api/stocks/StockPriceDto';
 import StocksQuery from '../../query/stocks/StocksQuery';
 
+const DEFAULT_CHART_HEIGHT = 600;
+const DEFAULT_CHART_WIDTH = 900;
+
 export const TimeSeriesChart = (props: StockPriceRequestDto) => {
-  const chartContainerRef = useRef(null);
+  const chartContainerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const {symbol, timeframe, from, to, priceType} = props;
   const stockApi = new StocksQuery();
@@ -14,13 +17,13 @@ export const TimeSeriesChart = (props: StockPriceRequestDto) => {
 
   useEffect(() => {
     const handleResize = () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      chart.applyOptions({width: chartContainerRef.current.clientWidth});
+      chart.applyOptions({
+        width: chartContainerRef.current ? chartContainerRef.current.clientWidth : DEFAULT_CHART_WIDTH,
+      });
     };
     const chart = createChart(chartContainerRef.current!, {
-      height: containerRef.current ? containerRef.current.clientHeight : 600,
-      width: containerRef.current ? containerRef.current.clientWidth : 900,
+      height: containerRef.current ? containerRef.current.clientHeight : DEFAULT_CHART_HEIGHT,
+      width: containerRef.current ? containerRef.current.clientWidth : DEFAULT_CHART_WIDTH,
       layout: {textColor: 'black', background: {color: 'white'}},
     });
     const lineSeries = chart.addLineSeries({color: '#2962FF'});
@@ -34,7 +37,6 @@ export const TimeSeriesChart = (props: StockPriceRequestDto) => {
       chart.remove();
     };
   }, [priceData]);
-
 
   return (
     <Stack
