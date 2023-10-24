@@ -6,9 +6,8 @@ describe('HomePage', () => {
     jest.clearAllMocks();
   });
 
-  it('Render home page', () => {
-    const homepage = new Renderer(<HomePage />).withQueryClientProvider().render();
-    const title = homepage.getByText('Time Series Chart');
-    expect(title).toBeInTheDocument();
+  it('Render home page', async () => {
+    const {getByText} = new Renderer(<HomePage />).withQueryClientProvider().render();
+    expect(getByText('Time Series Chart')).toBeTruthy();
   });
 });
