@@ -17,7 +17,7 @@ function HomePage() {
           symbol={'AAPL'}
           timeframe={'D'}
           from={1691971459}
-          to={1697971459}
+          to={new Date().getTime()}
           priceType={PriceType.CLOSE}
         />
       </header>
