@@ -6,7 +6,7 @@ import {StockPriceRequestDto} from '../../api/finnhub-api/stocks/StockPriceDto';
 export default class StocksQuery {
   private stockApi = new FinnhubStocksApi();
 
-  getStockSymbol = (exchange = 'US') => {
+  getStockList = (exchange = 'US') => {
     const {data} = useQuery({
       queryKey: [exchange],
       queryFn: () => this.stockApi.fetchStockSymbol(exchange),

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {StockPriceRequestDto, StockPriceResponseDto, StockSymbolResponseDto} from './StockPriceDto';
+import {StockListDto, StockPriceRequestDto, StockPriceResponseDto, StockSymbolResponseDto} from './StockPriceDto';
 import {SingleValueData, Time, UTCTimestamp} from 'lightweight-charts';
 import {PriceType} from './StockConst';
 
@@ -7,11 +7,15 @@ export default class FinnhubStocksApi {
   public baseUrl = process.env.REACT_APP_FINNHUB_URL;
   private apiKey = process.env.REACT_APP_FINNHUB_API_KEY;
 
-  fetchStockSymbol = async (exchange = 'US'): Promise<string[]> => {
+  fetchStockSymbol = async (exchange = 'US'): Promise<StockListDto[]> => {
     const response = await axios.get(`${this.baseUrl}/symbol?exchange=${exchange}&token=${this.apiKey}`);
     const rawData: StockSymbolResponseDto[] = response.data;
     // In this case, we only need the `symbols`
-    return rawData?.map((stock: StockSymbolResponseDto) => stock.symbol);
+    return rawData?.map((stock: StockSymbolResponseDto) => ({
+      id: stock.symbol,
+      stock: stock.symbol,
+      description: stock.description,
+    }));
   };
 
   fetchStockPrice = async (props: StockPriceRequestDto): Promise<SingleValueData<Time>[]> => {

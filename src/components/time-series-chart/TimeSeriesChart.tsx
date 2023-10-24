@@ -5,8 +5,8 @@ import {StockPriceRequestDto} from '../../api/finnhub-api/stocks/StockPriceDto';
 import StocksQuery from '../../query/stocks/StocksQuery';
 import {TestID} from '../../utils/testing/Constant';
 
-const DEFAULT_CHART_HEIGHT = 600;
-const DEFAULT_CHART_WIDTH = 900;
+const DEFAULT_CHART_HEIGHT = 300;
+const DEFAULT_CHART_WIDTH = 400;
 
 export const TimeSeriesChart = (props: StockPriceRequestDto) => {
   const chartContainerRef = useRef<HTMLDivElement>(null);
@@ -42,8 +42,8 @@ export const TimeSeriesChart = (props: StockPriceRequestDto) => {
   return (
     <Stack
       sx={{
-        height: '50vh',
-        width: '90%',
+        height: 400,
+        width: '50%',
       }}
       ref={containerRef}
     >

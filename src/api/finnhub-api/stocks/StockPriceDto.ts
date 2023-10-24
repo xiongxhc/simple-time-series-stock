@@ -28,3 +28,7 @@ export interface StockSymbolResponseDto {
   symbol: string;
   type: string;
 }
+
+export interface StockListDto extends Partial<StockSymbolResponseDto> {
+  id: string;
+}
