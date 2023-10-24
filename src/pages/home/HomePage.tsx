@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './HomePage.css';
 import {Typography} from '@mui/material';
 import {TimeSeriesChart} from '../../components/time-series-chart/TimeSeriesChart';
@@ -9,6 +9,12 @@ import {StockSelectionTable} from '../../components/stock-selection-table/StockS
 function HomePage() {
   const stocksQuery = new StocksQuery();
   const stockList = stocksQuery.getStockList();
+  const [rowSelectionModel, setRowSelectionModel] =
+    React.useState<string[]>([]);
+
+  useEffect(() => {
+    console.log(rowSelectionModel);
+  }, [rowSelectionModel]);
   return (
     <div className="HomePage">
       <Typography
@@ -18,12 +24,26 @@ function HomePage() {
         Time Series Chart
       </Typography>
       <div className="HomePage-header">
-        <StockSelectionTable stockList={stockList ?? []} />
+        <StockSelectionTable stockList={stockList ?? []} setRowSelectionModel={setRowSelectionModel} />
         <TimeSeriesChart
-          symbol={'AAPL'}
+          symbol={rowSelectionModel[0]}
           timeframe={'D'}
-          from={new Date('2018-01-01T00:00:00.000Z').getTime() / 1000}
-          to={new Date('2022-01-01T00:00:00.000Z').getTime() / 1000}
+          from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
+          to={new Date().getTime()}
+          priceType={PriceType.CLOSE}
+        />
+        <TimeSeriesChart
+          symbol={rowSelectionModel[1]}
+          timeframe={'D'}
+          from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
+          to={new Date().getTime()}
+          priceType={PriceType.CLOSE}
+        />
+        <TimeSeriesChart
+          symbol={rowSelectionModel[2]}
+          timeframe={'D'}
+          from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
+          to={new Date().getTime()}
           priceType={PriceType.CLOSE}
         />
       </div>

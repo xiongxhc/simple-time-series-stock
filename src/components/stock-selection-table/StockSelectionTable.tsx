@@ -1,10 +1,11 @@
 import {Box} from '@mui/material';
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import {StockListDto} from '../../api/finnhub-api/stocks/StockPriceDto';
 
 interface StockSelectionTableProps {
   stockList: StockListDto[];
+  setRowSelectionModel: Dispatch<SetStateAction<string[]>>;
 }
 
 const columns: GridColDef[] = [
@@ -18,7 +19,7 @@ const columns: GridColDef[] = [
 ];
 
 export const StockSelectionTable = (props: StockSelectionTableProps) => {
-  const {stockList} = props;
+  const {stockList, setRowSelectionModel} = props;
   return (
     <Box sx={{ height: 600, width: '45%', padding: 2 }}>
       <DataGrid
@@ -30,7 +31,11 @@ export const StockSelectionTable = (props: StockSelectionTableProps) => {
           },
         }}
         pageSizeOptions={[5, 10, 25, 50, 100]}
+        onRowSelectionModelChange={(newRowSelectionModel) => {
+          setRowSelectionModel(newRowSelectionModel as string[]);
+        }}
         checkboxSelection
+        disableRowSelectionOnClick
       />
     </Box>
   );
