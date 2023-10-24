@@ -16,8 +16,8 @@ function HomePage() {
         <TimeSeriesChart
           symbol={'AAPL'}
           timeframe={'D'}
-          from={1691971459}
-          to={new Date().getTime()}
+          from={new Date('2018-01-01T00:00:00.000Z').getTime() / 1000}
+          to={new Date('2022-01-01T00:00:00.000Z').getTime() / 1000}
           priceType={PriceType.CLOSE}
         />
       </header>

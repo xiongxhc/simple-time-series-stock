@@ -3,6 +3,7 @@ import React, {useEffect, useRef} from 'react';
 import {createChart} from 'lightweight-charts';
 import {StockPriceRequestDto} from '../../api/finnhub-api/stocks/StockPriceDto';
 import StocksQuery from '../../query/stocks/StocksQuery';
+import {TestID} from '../../utils/testing/Constant';
 
 const DEFAULT_CHART_HEIGHT = 600;
 const DEFAULT_CHART_WIDTH = 900;
@@ -11,9 +12,9 @@ export const TimeSeriesChart = (props: StockPriceRequestDto) => {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const {symbol, timeframe, from, to, priceType} = props;
-  const stockApi = new StocksQuery();
+  const stocksQuery = new StocksQuery();
 
-  const priceData = stockApi.getStockPrice({symbol, timeframe, from, to, priceType});
+  const priceData = stocksQuery.getStockPrice({symbol, timeframe, from, to, priceType});
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,7 +47,7 @@ export const TimeSeriesChart = (props: StockPriceRequestDto) => {
       }}
       ref={containerRef}
     >
-      <div ref={chartContainerRef} hidden={priceData == undefined} />
+      <div data-testid={TestID.TIME_SERIES_CHART} ref={chartContainerRef} hidden={priceData == undefined} />
     </Stack>
   );
 };
