@@ -8,6 +8,10 @@ Install the dependencies and devDependencies and start the server.
 
 In the project directory, you can run:
 
+### `yarn `
+
+To install packages
+
 ### `yarn start`
 
 Runs the app in the development mode.\
@@ -22,9 +26,10 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### Screenshots
-![Screenshot 2023-10-26 at 2 12 58 AM](https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/56f38446-1d49-4fa5-8f9a-83e747314c47)
+![simple-time-series-chart](https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/454ec11c-8881-401a-9a93-c4741f20a862)
 
 ### Demo Recording
-https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/4081dc38-e76f-4693-b48f-9ad14facce13
+https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/dbbdcd37-5fb1-4622-a6f3-63f9e70a3bc0
+
 
 
