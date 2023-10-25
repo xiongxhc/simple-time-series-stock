@@ -12,10 +12,15 @@ describe('DatePickerPair', () => {
     const startTime = dayjs('2018-05-12');
     const endTime = dayjs('2023-04-17');
     const {getByTestId, getByDisplayValue} = new Renderer(
-      <DatePickerPair startTime={startTime} setStartTime={()=>jest.fn()} endTime={endTime} setEndTime={()=>jest.fn()} />,
-    )
-      .withQueryClientProvider()
-      .render();
+      (
+        <DatePickerPair
+          startTime={startTime}
+          setStartTime={() => jest.fn()}
+          endTime={endTime}
+          setEndTime={() => jest.fn()}
+        />
+      ),
+    ).render();
     expect(getByTestId(TestID.DATE_PICKER_PAIR)).toBeTruthy();
     expect(getByDisplayValue('05/12/2018')).toBeTruthy();
     expect(getByDisplayValue('04/17/2023')).toBeTruthy();

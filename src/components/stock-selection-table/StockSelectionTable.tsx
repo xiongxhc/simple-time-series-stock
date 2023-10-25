@@ -3,8 +3,9 @@ import React, {Dispatch, SetStateAction} from 'react';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import {StockListDto} from '../../api/finnhub-api/stocks/StockPriceDto';
 import {DatePickerPair, DatePickerPairProps} from '../date-picker-pair/DatePickerPair';
+import {DropdownSelector, DropdownSelectorProps} from '../dropdown-selector/DropdownSelector';
 
-export interface StockSelectionTableProps extends DatePickerPairProps {
+export interface StockSelectionTableProps extends DatePickerPairProps, DropdownSelectorProps {
   stockList: StockListDto[];
   setRowSelectionModel: Dispatch<SetStateAction<string[]>>;
 }
@@ -20,9 +21,26 @@ const columns: GridColDef[] = [
 ];
 
 export const StockSelectionTable = (props: StockSelectionTableProps) => {
-  const {stockList, setRowSelectionModel, startTime, setStartTime, endTime, setEndTime} = props;
+  const {
+    dropdownLabel,
+    dropdownOptions,
+    dropdownSelection,
+    handleDropdownChange,
+    stockList,
+    setRowSelectionModel,
+    startTime,
+    setStartTime,
+    endTime,
+    setEndTime,
+  } = props;
   return (
     <Stack>
+      <DropdownSelector
+        dropdownLabel={dropdownLabel}
+        dropdownOptions={dropdownOptions}
+        dropdownSelection={dropdownSelection}
+        handleDropdownChange={handleDropdownChange}
+      />
       <DatePickerPair startTime={startTime} setStartTime={setStartTime} endTime={endTime} setEndTime={setEndTime} />
       <Box sx={{height: 400, padding: 2}}>
         <DataGrid

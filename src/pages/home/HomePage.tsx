@@ -9,7 +9,8 @@ import {StockSelectionTable} from '../../components/stock-selection-table/StockS
 function HomePage() {
   const stocksQuery = new StocksQuery();
   const stockList = stocksQuery.getStockList();
-  const [rowSelectionModel, setRowSelectionModel] = React.useState<string[]>([]);
+  const [rowSelectionModel, setRowSelectionModel] = useState<string[]>([]);
+  const [priceOption, setPriceOption] = useState<string>(PriceType.CLOSE);
   const [startTime, setStartTime] = useState<Dayjs | null>(dayjs('2022-04-17'));
   const [endTime, setEndTime] = useState<Dayjs | null>(dayjs('2023-04-17'));
 
@@ -32,6 +33,10 @@ function HomePage() {
           }}
         >
           <StockSelectionTable
+            dropdownLabel={'Price Option'}
+            dropdownOptions={Object.values(PriceType)}
+            dropdownSelection={priceOption}
+            handleDropdownChange={setPriceOption}
             stockList={stockList ?? []}
             setRowSelectionModel={setRowSelectionModel}
             startTime={startTime}

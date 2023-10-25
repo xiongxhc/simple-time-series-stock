@@ -10,9 +10,15 @@ describe('DropdownSelector', () => {
 
   it('Render DropdownSelector', async () => {
     const {getByTestId} = new Renderer(
-      <DropdownSelector label={'Price Option'} dropdownOptions={Object.values(PriceType)} value={PriceType.CLOSE} handleChange={jest.fn()}/>,
-    )
-      .render();
+      (
+        <DropdownSelector
+          dropdownLabel={'Price Option'}
+          dropdownOptions={Object.values(PriceType)}
+          dropdownSelection={PriceType.CLOSE}
+          handleDropdownChange={jest.fn()}
+        />
+      ),
+    ).render();
     expect(getByTestId(TestID.DROPDOWN_SELECTOR)).toBeTruthy();
     expect(`${TestID.DROPDOWN_SELECTOR}_${PriceType.CLOSE}`).toBeTruthy();
   });
