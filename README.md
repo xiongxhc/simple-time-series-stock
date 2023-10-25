@@ -29,4 +29,5 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ![simple-time-series-chart](https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/454ec11c-8881-401a-9a93-c4741f20a862)
 
 ### Demo Recording
-https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/e8725686-f9ea-48f9-bf32-2035570a41f9
+https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/f591bae1-cb65-4738-9e4e-6a3f24bef4cb
+
