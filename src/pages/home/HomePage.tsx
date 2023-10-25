@@ -10,8 +10,8 @@ function HomePage() {
   const stocksQuery = new StocksQuery();
   const stockList = stocksQuery.getStockList();
   const [rowSelectionModel, setRowSelectionModel] = React.useState<string[]>([]);
-  // const [startTime, setStartTime] = useState()
-  const [endTime, setEndTime] = useState<Dayjs | null>(dayjs('2022-04-17'));
+  const [startTime, setStartTime] = useState<Dayjs | null>(dayjs('2022-04-17'));
+  const [endTime, setEndTime] = useState<Dayjs | null>(dayjs('2023-04-17'));
 
   return (
     <Stack>
@@ -34,6 +34,8 @@ function HomePage() {
           <StockSelectionTable
             stockList={stockList ?? []}
             setRowSelectionModel={setRowSelectionModel}
+            startTime={startTime}
+            setStartTime={setStartTime}
             endTime={endTime}
             setEndTime={setEndTime}
           />
