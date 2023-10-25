@@ -34,10 +34,12 @@ export const StockSelectionTable = (props: StockSelectionTableProps) => {
     setEndTime,
   } = props;
   return (
-    <Stack sx={{
-      padding: 5,
-      alignItems: 'center'
-    }}>
+    <Stack
+      sx={{
+        padding: 5,
+        alignItems: 'center',
+      }}
+    >
       <DropdownSelector
         dropdownLabel={dropdownLabel}
         dropdownOptions={dropdownOptions}

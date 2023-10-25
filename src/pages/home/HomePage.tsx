@@ -28,7 +28,6 @@ function HomePage() {
             minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
             color: 'white',
           }}
         >
@@ -44,27 +43,37 @@ function HomePage() {
             endTime={endTime}
             setEndTime={setEndTime}
           />
-          <TimeSeriesChart
-            symbol={rowSelectionModel[0]}
-            timeframe={'D'}
-            from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
-            to={new Date().getTime()}
-            priceType={PriceType.CLOSE}
-          />
-          <TimeSeriesChart
-            symbol={rowSelectionModel[1]}
-            timeframe={'D'}
-            from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
-            to={new Date().getTime()}
-            priceType={PriceType.CLOSE}
-          />
-          <TimeSeriesChart
-            symbol={rowSelectionModel[2]}
-            timeframe={'D'}
-            from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
-            to={new Date().getTime()}
-            priceType={PriceType.CLOSE}
-          />
+          <Stack
+            sx={{
+              width: '95%',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+            }}
+          >
+            <TimeSeriesChart
+              symbol={rowSelectionModel[0]}
+              timeframe={'D'}
+              from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
+              to={new Date().getTime()}
+              priceType={PriceType.CLOSE}
+            />
+            <TimeSeriesChart
+              symbol={rowSelectionModel[1]}
+              timeframe={'D'}
+              from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
+              to={new Date().getTime()}
+              priceType={PriceType.CLOSE}
+            />
+            <TimeSeriesChart
+              symbol={rowSelectionModel[2]}
+              timeframe={'D'}
+              from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
+              to={new Date().getTime()}
+              priceType={PriceType.CLOSE}
+            />
+          </Stack>
         </Stack>
       </>
     </Stack>

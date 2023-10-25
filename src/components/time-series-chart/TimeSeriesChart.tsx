@@ -43,7 +43,10 @@ export const TimeSeriesChart = (props: StockPriceRequestDto) => {
     <Stack
       sx={{
         height: 400,
-        width: '50%',
+        width: '33%',
+        border: 2,
+        borderRadius: 2,
+        borderColor: 'gray'
       }}
       ref={containerRef}
     >
