@@ -28,7 +28,6 @@ function HomePage() {
             minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
-            color: 'white',
           }}
         >
           <StockSelectionTable
@@ -44,6 +43,11 @@ function HomePage() {
             endTime={endTime}
             setEndTime={setEndTime}
           />
+          <Typography sx={{
+            paddingBottom: 3,
+            color: 'gray',
+            fontWeight: 'bold'
+          }}>To view chart, please select stocks from the stocks list (max 3 charts)</Typography>
           <Stack
             sx={{
               width: '95%',
@@ -54,6 +58,7 @@ function HomePage() {
             }}
           >
             <TimeSeriesChart
+              stockSymbol={rowSelectionModel[0]}
               symbol={rowSelectionModel[0]}
               timeframe={'D'} // For this demo purpose, `daily` prices should be good
               from={dayjs(startTime).valueOf()} // We can easily have more control/customisation on each graph as well
@@ -61,6 +66,7 @@ function HomePage() {
               priceType={priceOption}
             />
             <TimeSeriesChart
+              stockSymbol={rowSelectionModel[1]}
               symbol={rowSelectionModel[1]}
               timeframe={'D'}
               from={dayjs(startTime).valueOf()}
@@ -68,6 +74,7 @@ function HomePage() {
               priceType={priceOption}
             />
             <TimeSeriesChart
+              stockSymbol={rowSelectionModel[2]}
               symbol={rowSelectionModel[2]}
               timeframe={'D'}
               from={dayjs(startTime).valueOf()}

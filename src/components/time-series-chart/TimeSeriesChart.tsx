@@ -1,4 +1,4 @@
-import {Stack} from '@mui/material';
+import {Stack, Typography} from '@mui/material';
 import React, {useEffect, useRef} from 'react';
 import {createChart} from 'lightweight-charts';
 import {StockPriceRequestDto} from '../../api/finnhub-api/stocks/StockPriceDto';
@@ -8,10 +8,14 @@ import {TestID} from '../../utils/testing/Constant';
 const DEFAULT_CHART_HEIGHT = 300;
 const DEFAULT_CHART_WIDTH = 400;
 
-export const TimeSeriesChart = (props: StockPriceRequestDto) => {
+interface TimeSeriesChartProps extends StockPriceRequestDto {
+  stockSymbol?: string
+}
+
+export const TimeSeriesChart = (props: TimeSeriesChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const {symbol, timeframe, from, to, priceType} = props;
+  const {symbol, timeframe, from, to, priceType, stockSymbol} = props;
   const stocksQuery = new StocksQuery();
 
   const priceData = stocksQuery.getStockPrice({symbol, timeframe, from, to, priceType});
@@ -44,13 +48,20 @@ export const TimeSeriesChart = (props: StockPriceRequestDto) => {
       sx={{
         height: 400,
         width: '33%',
-        border: 2,
-        borderRadius: 2,
-        borderColor: 'gray',
       }}
       ref={containerRef}
     >
-      <div data-testid={TestID.TIME_SERIES_CHART} ref={chartContainerRef} hidden={priceData == undefined} />
+      <Typography>{stockSymbol ?? '-'}</Typography>
+      <Stack
+        sx={{
+          border: 2,
+          borderColor: 'gray',
+          width: '100%',
+          height: '100%'
+        }}
+      >
+        <div data-testid={TestID.TIME_SERIES_CHART} ref={chartContainerRef} hidden={priceData == undefined} />
+      </Stack>
     </Stack>
   );
 };
