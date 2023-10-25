@@ -8,6 +8,7 @@ import {DropdownSelector, DropdownSelectorProps} from '../dropdown-selector/Drop
 export interface StockSelectionTableProps extends DatePickerPairProps, DropdownSelectorProps {
   stockList: StockListDto[];
   setRowSelectionModel: Dispatch<SetStateAction<string[]>>;
+  maxSelectionAllowed?: number;
 }
 
 const columns: GridColDef[] = [
@@ -28,6 +29,7 @@ export const StockSelectionTable = (props: StockSelectionTableProps) => {
     handleDropdownChange,
     stockList,
     setRowSelectionModel,
+    maxSelectionAllowed = 3,
     startTime,
     setStartTime,
     endTime,
@@ -58,6 +60,9 @@ export const StockSelectionTable = (props: StockSelectionTableProps) => {
           }}
           pageSizeOptions={[5, 10, 25, 50, 100]}
           onRowSelectionModelChange={(newRowSelectionModel) => {
+            if (newRowSelectionModel.length > maxSelectionAllowed) {
+              return;
+            }
             setRowSelectionModel(newRowSelectionModel as string[]);
           }}
           checkboxSelection

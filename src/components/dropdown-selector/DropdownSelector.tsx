@@ -2,12 +2,13 @@ import {FormControl, InputLabel, Select, SelectChangeEvent, Stack} from '@mui/ma
 import MenuItem from '@mui/material/MenuItem';
 import React, {Dispatch, SetStateAction} from 'react';
 import {TestID} from '../../utils/testing/Constant';
+import {PriceType} from '../../api/finnhub-api/stocks/StockConst';
 
 export interface DropdownSelectorProps {
   dropdownLabel: string;
   dropdownOptions: string[];
   dropdownSelection: string;
-  handleDropdownChange: Dispatch<SetStateAction<string>>;
+  handleDropdownChange: Dispatch<SetStateAction<PriceType>>;
 }
 
 export const DropdownSelector = (props: DropdownSelectorProps) => {
@@ -20,7 +21,7 @@ export const DropdownSelector = (props: DropdownSelectorProps) => {
           data-testid={`${TestID.DROPDOWN_SELECTOR}_${dropdownSelection}`}
           value={dropdownSelection}
           label={dropdownSelection}
-          onChange={(event: SelectChangeEvent) => handleDropdownChange(event.target.value as string)}
+          onChange={(event: SelectChangeEvent) => handleDropdownChange(event.target.value as PriceType)}
         >
           {dropdownOptions.map((item) => (
             <MenuItem key={item} value={item}>

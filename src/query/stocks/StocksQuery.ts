@@ -6,19 +6,18 @@ import {StockPriceRequestDto} from '../../api/finnhub-api/stocks/StockPriceDto';
 export default class StocksQuery {
   private stockApi = new FinnhubStocksApi();
 
-  getStockList = (exchange = 'US') => {
+  getStockList = (exchange = 'US', mic = 'XNYS') => {
     const {data} = useQuery({
       queryKey: [exchange],
-      queryFn: () => this.stockApi.fetchStockSymbol(exchange),
+      queryFn: () => this.stockApi.fetchStockSymbol(exchange, mic),
     });
     return data;
   };
 
   getStockPrice = (props: StockPriceRequestDto) => {
-    const {symbol, timeframe, from, to} = props;
+    const {symbol, timeframe, from, to, priceType} = props;
     const {data} = useQuery({
-      // `priceType` changes don't need to re-call api
-      queryKey: [symbol, timeframe, from, to],
+      queryKey: [symbol, timeframe, from, to, priceType],
       queryFn: () => this.stockApi.fetchStockPrice(props),
     });
     return data;

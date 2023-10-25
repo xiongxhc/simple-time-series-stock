@@ -7,8 +7,8 @@ export default class FinnhubStocksApi {
   public baseUrl = process.env.REACT_APP_FINNHUB_URL;
   private apiKey = process.env.REACT_APP_FINNHUB_API_KEY;
 
-  fetchStockSymbol = async (exchange = 'US'): Promise<StockListDto[]> => {
-    const response = await axios.get(`${this.baseUrl}/symbol?exchange=${exchange}&token=${this.apiKey}`);
+  fetchStockSymbol = async (exchange = 'US', mic = 'XNYS'): Promise<StockListDto[]> => {
+    const response = await axios.get(`${this.baseUrl}/symbol?exchange=${exchange}&mic=${mic}&token=${this.apiKey}`);
     const rawData: StockSymbolResponseDto[] = response.data;
     // In this case, we only need the `symbols`
     return rawData?.map((stock: StockSymbolResponseDto) => ({

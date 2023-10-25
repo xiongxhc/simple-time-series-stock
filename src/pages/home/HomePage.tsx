@@ -10,9 +10,9 @@ function HomePage() {
   const stocksQuery = new StocksQuery();
   const stockList = stocksQuery.getStockList();
   const [rowSelectionModel, setRowSelectionModel] = useState<string[]>([]);
-  const [priceOption, setPriceOption] = useState<string>(PriceType.CLOSE);
-  const [startTime, setStartTime] = useState<Dayjs | null>(dayjs('2022-04-17'));
-  const [endTime, setEndTime] = useState<Dayjs | null>(dayjs('2023-04-17'));
+  const [priceOption, setPriceOption] = useState<PriceType>(PriceType.CLOSE);
+  const [startTime, setStartTime] = useState<Dayjs | null>(dayjs('2023-01-01'));
+  const [endTime, setEndTime] = useState<Dayjs | null>(dayjs());
 
   return (
     <Stack>
@@ -38,6 +38,7 @@ function HomePage() {
             handleDropdownChange={setPriceOption}
             stockList={stockList ?? []}
             setRowSelectionModel={setRowSelectionModel}
+            maxSelectionAllowed={3}
             startTime={startTime}
             setStartTime={setStartTime}
             endTime={endTime}
@@ -54,24 +55,24 @@ function HomePage() {
           >
             <TimeSeriesChart
               symbol={rowSelectionModel[0]}
-              timeframe={'D'}
-              from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
-              to={new Date().getTime()}
-              priceType={PriceType.CLOSE}
+              timeframe={'D'} // For this demo purpose, `daily` prices should be good
+              from={dayjs(startTime).valueOf()} // We can easily have more control/customisation on each graph as well
+              to={dayjs(endTime).valueOf()}
+              priceType={priceOption}
             />
             <TimeSeriesChart
               symbol={rowSelectionModel[1]}
               timeframe={'D'}
-              from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
-              to={new Date().getTime()}
-              priceType={PriceType.CLOSE}
+              from={dayjs(startTime).valueOf()}
+              to={dayjs(endTime).valueOf()}
+              priceType={priceOption}
             />
             <TimeSeriesChart
               symbol={rowSelectionModel[2]}
               timeframe={'D'}
-              from={new Date('2023-01-01T00:00:00.000Z').getTime() / 1000}
-              to={new Date().getTime()}
-              priceType={PriceType.CLOSE}
+              from={dayjs(startTime).valueOf()}
+              to={dayjs(endTime).valueOf()}
+              priceType={priceOption}
             />
           </Stack>
         </Stack>
