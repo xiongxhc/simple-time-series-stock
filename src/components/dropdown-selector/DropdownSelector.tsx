@@ -2,7 +2,7 @@ import {FormControl, InputLabel, Select, SelectChangeEvent, Stack} from '@mui/ma
 import MenuItem from '@mui/material/MenuItem';
 import React, {Dispatch, SetStateAction} from 'react';
 import {TestID} from '../../utils/testing/Constant';
-import {PriceType} from '../../api/finnhub-api/stocks/StockConst';
+import {PriceType, PriceTypeName} from '../../api/finnhub-api/stocks/StockConst';
 
 export interface DropdownSelectorProps {
   dropdownLabel: string;
@@ -25,7 +25,7 @@ export const DropdownSelector = (props: DropdownSelectorProps) => {
         >
           {dropdownOptions.map((item) => (
             <MenuItem key={item} value={item}>
-              {item}
+              {PriceTypeName[`${item}`]}
             </MenuItem>
           ))}
         </Select>
