@@ -17,7 +17,7 @@ export interface DatePickerPairProps {
 export const DatePickerPair = (props: DatePickerPairProps) => {
   const {startTime, setStartTime, endTime, setEndTime} = props;
   return (
-    <Stack data-testid={TestID.DATE_PICKER_PAIR}>
+    <Stack data-testid={TestID.DATE_PICKER_PAIR} sx={{padding: 2}}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={['DatePicker', 'DatePicker']}>
           <DatePicker

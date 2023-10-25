@@ -34,7 +34,10 @@ export const StockSelectionTable = (props: StockSelectionTableProps) => {
     setEndTime,
   } = props;
   return (
-    <Stack>
+    <Stack sx={{
+      padding: 5,
+      alignItems: 'center'
+    }}>
       <DropdownSelector
         dropdownLabel={dropdownLabel}
         dropdownOptions={dropdownOptions}
@@ -42,7 +45,7 @@ export const StockSelectionTable = (props: StockSelectionTableProps) => {
         handleDropdownChange={handleDropdownChange}
       />
       <DatePickerPair startTime={startTime} setStartTime={setStartTime} endTime={endTime} setEndTime={setEndTime} />
-      <Box sx={{height: 400, padding: 2}}>
+      <Box sx={{height: 300, width: '60vw', padding: 2}}>
         <DataGrid
           rows={stockList}
           columns={columns}

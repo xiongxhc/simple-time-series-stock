@@ -14,7 +14,7 @@ export const DropdownSelector = (props: DropdownSelectorProps) => {
   const {dropdownLabel, dropdownOptions, dropdownSelection, handleDropdownChange} = props;
   return (
     <Stack data-testid={TestID.DROPDOWN_SELECTOR}>
-      <FormControl fullWidth>
+      <FormControl fullWidth sx={{width: 480}}>
         <InputLabel>{dropdownLabel}</InputLabel>
         <Select
           data-testid={`${TestID.DROPDOWN_SELECTOR}_${dropdownSelection}`}
