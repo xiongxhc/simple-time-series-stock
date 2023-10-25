@@ -13,7 +13,7 @@ export default class FinnhubStocksApi {
     // In this case, we only need the `symbols`
     return rawData?.map((stock: StockSymbolResponseDto) => ({
       id: stock.symbol,
-      stock: stock.symbol,
+      stockSymbol: stock.symbol,
       description: stock.description,
     }));
   };

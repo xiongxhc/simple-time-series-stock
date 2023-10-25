@@ -13,10 +13,16 @@ export interface StockSelectionTableProps extends DatePickerPairProps, DropdownS
 
 const columns: GridColDef[] = [
   {
+    field: 'stockSymbol',
+    headerName: 'Stock Symbol',
+    sortable: false,
+    width: 200,
+  },
+  {
     field: 'description',
     headerName: 'Company Name (Searchable via Menu Filter)',
     sortable: false,
-    width: 500,
+    width: 300,
   },
 ];
 

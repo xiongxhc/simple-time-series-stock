@@ -46,7 +46,7 @@ export const TimeSeriesChart = (props: StockPriceRequestDto) => {
         width: '33%',
         border: 2,
         borderRadius: 2,
-        borderColor: 'gray'
+        borderColor: 'gray',
       }}
       ref={containerRef}
     >
