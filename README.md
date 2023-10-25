@@ -1,10 +1,6 @@
 # Simple Time Series Stock
 
-A simple view of time series chart on the US Stock Exchange.
-
-## Tech
-
-- [React](https://reactjs.org//) - node.js network app framework
+A simple view of a time series chart on the US Stock Exchange.
 
 ## Available Scripts
 
@@ -25,10 +21,10 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn run build`
+### Screenshots
+![Screenshot 2023-10-26 at 2 12 58 AM](https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/56f38446-1d49-4fa5-8f9a-83e747314c47)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Demo Recording
+https://github.com/xiongxhc/simple-time-series-stock/assets/21257743/4081dc38-e76f-4693-b48f-9ad14facce13
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+
