@@ -1,5 +1,5 @@
 {
-  "name": "schroder-stock-time-series",
+  "name": "simple-stock-time-series",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
